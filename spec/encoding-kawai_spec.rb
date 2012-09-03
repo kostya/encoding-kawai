@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require File.dirname(__FILE__) + '/spec_helper'
 
-OBJS = ["bla", 'бла', ['bla', 'бла']]
+OBJS = ["bla", 'бла', ['bla', 'бла'], nil]
 H = {:bla => 'bla', 'бла' => 1}
 
 describe "encoding-kawai" do

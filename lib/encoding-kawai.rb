@@ -23,3 +23,13 @@ else
   end
   
 end
+
+class NilClass
+  def _utf8
+    self
+  end
+
+  def _binary
+    self
+  end
+end
