@@ -11,12 +11,12 @@ describe "encoding-kawai" do
     %w{utf8 binary}.each do |enc|
       OBJS.each do |obj|
         it "should word for each object to code with #{enc} on obj: #{obj.inspect}" do
-          obj.send("_#{enc}").should == obj
+          obj.send("#{enc}!").should == obj
         end
       end
       
       it "should word for each object to code with #{enc} on obj: #{H.inspect}" do
-        H.send("_#{enc}").should == H
+        H.send("#{enc}!").should == H
       end                                
     end
     
@@ -25,19 +25,19 @@ describe "encoding-kawai" do
     %w{utf8 binary}.each do |enc|
       OBJS.each do |obj|
         it "should word for each object to code with #{enc} on obj: #{obj.inspect}" do
-          obj.send("_#{enc}").should == obj
+          obj.send("#{enc}!").should == obj
         end                                          
       end
       
       it "should word for each object to code with #{enc} on obj: #{H.inspect}" do
         str = enc == 'utf8' ? "бла".force_encoding('utf-8') : "бла".force_encoding('binary')
-        H.send("_#{enc}").should == {:bla => 'bla', str => 1}
+        H.send("#{enc}!").should == {:bla => 'bla', str => 1}
       end              
       
       it "should set encoding" do
         str = "бла"
         str.encoding.name.should == "UTF-8"
-        str.send("_#{enc}")
+        str.send("#{enc}!")
         if enc == 'utf8'
           str.encoding.name.should == 'UTF-8'
         else

@@ -1,44 +1,44 @@
 class Object
-  def _utf8
+  def utf8!
     self
   end
 
-  def _binary
+  def binary!
     self
   end
 end
 
 if RUBY_VERSION >= '1.9'
   class Array
-    def _utf8
-      map { |a| a._utf8 }
+    def utf8!
+      map { |a| a.utf8! }
     end
 
-    def _binary
-      map { |a| a._binary }
+    def binary!
+      map { |a| a.binary! }
     end
   end
 
   class Regexp
-    def _utf8
-      Regexp.new(to_s._utf8)
+    def utf8!
+      Regexp.new(to_s.utf8!)
     end
 
-    def _binary
-      Regexp.new(to_s._binary)
+    def binary!
+      Regexp.new(to_s.binary!)
     end
   end
 
   class Hash
-    def _utf8
+    def utf8!
       {}.tap{|h| 
-        keys.each { |k| h[k.frozen? ? k.dup._utf8 : k._utf8] = self[k]._utf8 }
+        keys.each { |k| h[k.frozen? ? k.dup.utf8! : k.utf8!] = self[k].utf8! }
       }
     end
 
-    def _binary
+    def binary!
       {}.tap{|h| 
-        keys.each { |k| h[k.frozen? ? k.dup._binary : k._binary] = self[k]._binary }
+        keys.each { |k| h[k.frozen? ? k.dup.binary! : k.binary!] = self[k].binary! }
       }
     end
   end

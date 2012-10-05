@@ -1,11 +1,11 @@
 if RUBY_VERSION < '1.9'
 
   class String
-    def _utf8
+    def utf8!
       self
     end
   
-    def _binary
+    def binary!
       self
     end
   end
@@ -13,11 +13,11 @@ if RUBY_VERSION < '1.9'
 else 
 
   class String
-    def _utf8
+    def utf8!
       self.force_encoding('utf-8')
     end
     
-    def _binary
+    def binary!
       self.force_encoding('binary')
     end
   end
@@ -25,11 +25,11 @@ else
 end
 
 class NilClass
-  def _utf8
+  def utf8!
     self
   end
 
-  def _binary
+  def binary!
     self
   end
 end
