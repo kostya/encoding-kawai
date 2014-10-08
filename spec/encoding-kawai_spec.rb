@@ -2,7 +2,7 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 OBJS = ["bla", 'бла', ['bla', 'бла'], nil]
-H = {:bla => 'bla', 'бла' => 1}
+H = {:bla => 'bla', 'бла' => 1, :url => nil, :x => [:a => "идф", :b => true]}
 
 describe "encoding-kawai" do
 
