@@ -31,7 +31,8 @@ describe "encoding-kawai" do
       
       it "should word for each object to code with #{enc} on obj: #{H.inspect}" do
         str = enc == 'utf8' ? "бла".force_encoding('utf-8') : "бла".force_encoding('binary')
-        H.send("#{enc}!").should == {:bla => 'bla', str => 1}
+        str2 = enc == 'utf8' ? "идф".force_encoding('utf-8') : "идф".force_encoding('binary')
+        H.send("#{enc}!").should == {:bla => 'bla', str => 1, :url => nil, :x => [:a => str2, :b => true]}
       end              
       
       it "should set encoding" do
