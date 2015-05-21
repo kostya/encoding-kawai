@@ -32,13 +32,13 @@ if RUBY_VERSION >= '1.9'
   class Hash
     def utf8!
       {}.tap{|h| 
-        keys.each { |k| h[(k.frozen? && !k.is_a?(Symbol)) ? k.dup.utf8! : k.utf8!] = self[k].utf8! }
+        keys.each { |k| h[(k.frozen? && !k.is_a?(Symbol) && !k.is_a?(Fixnum)) ? k.dup.utf8! : k.utf8!] = self[k].utf8! }
       }
     end
 
     def binary!
       {}.tap{|h| 
-        keys.each { |k| h[(k.frozen? && !k.is_a?(Symbol)) ? k.dup.binary! : k.binary!] = self[k].binary! }
+        keys.each { |k| h[(k.frozen? && !k.is_a?(Symbol) && !k.is_a?(Fixnum)) ? k.dup.binary! : k.binary!] = self[k].binary! }
       }
     end
   end
