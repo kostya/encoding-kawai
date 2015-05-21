@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{encoding-kawai}
-  s.version = "0.4"
+  s.version = "0.5"
 
   s.authors = ["Makarchev K"]
   
